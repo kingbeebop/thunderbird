@@ -10,14 +10,14 @@ const displayImage = document.getElementById("image")
 const displayBlabber = document.getElementById('blabber')
 const gameText = document.getElementById('game-text')
 const gameButtons = document.getElementById('game-buttons')
-const gameData = {}
 let currentTime = 0
 
-setPerson()
-
-runGame()
-
-
+fetch("http://localhost:3000/game")
+.then(res=>res.json())
+.then(data => {
+    setPerson()
+    runGame(data)
+})
 
 function render(){
     displayTitle.textContent = person.name
@@ -38,17 +38,33 @@ function setPerson(){
 
 //TODO do this part:
 
-function runGame(){
-    currentTime ++
+function runGame(gameData){
+    
     gameText.textcontent = gameData.intoText
-    gameData.game[`${currentTime}`].buttons.forEach(button =>{
+    //FIX THIS PART:
+    console.log(gameData)
+    console.log(gameData[currentTime].options)
+    gameData.game[currentTime].options.forEach(option =>{
+        console.log("test")
         let newButton = document.createElement('btn')
-        newButton.textContent = button.text
+        newButton.textContent = option
         newButton.addEventListener('click',()=>{
-            person.mood += button.value
-            runGame()
+            likeCheck(option)
+            runGame(gameData)
         })
         gameButtons.appendChild(newButton)
     })
 
+    currentTime ++
+
+}
+
+function likeCheck(option){
+    person.likes.forEach(like => {
+        if(like == option){
+            person.mood += 10
+            return
+        }
+    })
+    person.mood -= 10
 }

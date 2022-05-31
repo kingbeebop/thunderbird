@@ -1,30 +1,17 @@
 {
     
-    "game": [
+"game": [
     {
     "id": 1,
-    "buttons": [
-        {
-        "text": "NEXT",
-        "value": 0
-    }
-]
-},
-
-
-{
+    "text": "some string",
+    "options": ["Next"]
+    },
+    {
     "id": 2,
-    "buttons": [
-        {"text": "COFFEE",
-        "value": 10},
-        {"text": "TEA",
-            "value": -10},
-            {"text": "WATER",
-                "value": -20}
-    ]
-}
+    "text": "some string",
+    "options": ["Coffee","Tea","Water"]
+    }],
 
-],
 "likes": {
         "music": [],
         "food": [],
