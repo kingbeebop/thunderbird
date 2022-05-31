@@ -1,8 +1,36 @@
 {
-    "images": [],
-    "likes": {
+    
+    "game": [
+    {
+    "id": 1,
+    "buttons": [
+        {
+        "text": "NEXT",
+        "value": 0
+    }
+]
+},
+
+
+{
+    "id": 2,
+    "buttons": [
+        {"text": "COFFEE",
+        "value": 10},
+        {"text": "TEA",
+            "value": -10},
+            {"text": "WATER",
+                "value": -20}
+    ]
+}
+
+],
+"likes": {
         "music": [],
         "food": [],
         "activities": []
     }
 }
+
+
+

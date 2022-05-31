@@ -7,11 +7,15 @@ const person = {
 }
 const displayTitle = document.getElementById("title")
 const displayImage = document.getElementById("image")
+const displayBlabber = document.getElementById('blabber')
+const gameText = document.getElementById('game-text')
+const gameButtons = document.getElementById('game-buttons')
+const gameData = {}
+let currentTime = 0
 
 setPerson()
 
-render()
-
+runGame()
 
 
 
@@ -30,4 +34,21 @@ function setPerson(){
       render(person)
   })
   
+}
+
+//TODO do this part:
+
+function runGame(){
+    currentTime ++
+    gameText.textcontent = gameData.intoText
+    gameData.game[`${currentTime}`].buttons.forEach(button =>{
+        let newButton = document.createElement('btn')
+        newButton.textContent = button.text
+        newButton.addEventListener('click',()=>{
+            person.mood += button.value
+            runGame()
+        })
+        gameButtons.appendChild(newButton)
+    })
+
 }
