@@ -42,9 +42,8 @@ function runGame(gameData){
     
     gameText.textcontent = gameData.intoText
     //FIX THIS PART:
-    console.log(gameData)
-    console.log(gameData[currentTime].options)
-    gameData.game[currentTime].options.forEach(option =>{
+    let turn = gameData[currentTime].options
+    turn.forEach(option =>{
         console.log("test")
         let newButton = document.createElement('btn')
         newButton.textContent = option
