@@ -3,33 +3,33 @@
 "game": [
     {
     "id": 1,
-    "text": "Good morning!  This is the first day of wahtevwdrnlasdgmnasg...",
+    "text": "Good morning!  It's a brand new day.",
     "options": ["Next"]
     },
     {
     "id": 2,
-    "text": "some string",
-    "options": ["Coffee","Tea","Water"]
+    "text": "After struggling out of bed, it's time to get yourself in the mood to take on the day.  You decide to make yourself some...",
+    "options": ["Coffee", "Water", "Tea", "Soup", "Eggs", "Cereal", "A Bagel"]
     },
     {
     "id": 3,
-    "text": "some string",
+    "text": "Huh... You really were expecting to feel... something.  Oh well.",
     "options": ["Next"]
     },
     {
     "id": 4,
-    "text": "some string",
-    "options": ["Coffee","Tea","Water"]
+    "text": "Now that you're up, it's time to get at it.  You decide to go to...",
+    "options": ["Work", "The Park", "Sleep", "The Archery Range", "The Bar", "The Ranch", "The Mountain", "The Amusement Park"]
     },
     {
     "id": 5,
-    "text": "some string",
+    "text": "",
     "options": ["Next"]
     },
     {
     "id": 6,
-    "text": "some string",
-    "options": ["Coffee","Tea","Water"]
+    "text": "After a long day, it's time to...",
+    "options": ["Work Out", "Play Video Games", "Sleep", "Practice Guitar", "Study For Your Code Challenge Retake", "Eat"]
     },
     {
     "id": 7,
@@ -41,9 +41,9 @@
 
 
 "likes": {
-        "music": [],
-        "food": [],
-        "activities": []
+        "night": ["Work Out", "Play Video Games", "Sleep", "Practice Guitar", "Study For Your Code Challenge Retake", "Eat"],
+        "food": ["Coffee", "Water", "Tea", "Soup", "Eggs", "Cereal", "A Bagel"],
+        "day": ["Work", "The Park", "Sleep", "The Archery Range", "The Bar", "The Ranch", "The Mountain", "The Amusement Park"]
     }
 }
 

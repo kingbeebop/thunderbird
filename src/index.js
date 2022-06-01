@@ -35,9 +35,20 @@ function setPerson(){
   .then(json=>{
       person.name = json.name
       //TODO: randomize this
-      person.likes = ['coffee', 'neo-soul', 'archery']
-      person.mood = Math.random() * 100
-      render(person)
+      fetch("http://localhost:3000/likes")
+      .then(res=>res.json())
+      .then(allLikes => {
+
+          //set random interests
+        let food = allLikes.food[Math.floor(Math.random()*allLikes.food.length)]
+        let day = allLikes.day[Math.floor(Math.random()*allLikes.day.length)]
+        let night = allLikes.night[Math.floor(Math.random()*allLikes.night.length)]
+        person.likes = [food, day, night]
+
+        //randomize starting mood
+        person.mood = Math.random() * 100
+        render(person)
+      })
   })
   
 }
@@ -58,17 +69,19 @@ function runGame(gameData){
     clearButtons()
 
     //populate new game options
-    let turn = gameData[currentTime].options
 
-    turn.forEach(option =>{
-        let newButton = document.createElement('btn')
-        newButton.textContent = option
-        newButton.addEventListener('click',()=>{
-            likeCheck(option)
-            runGame(gameData)
-        })
-        gameButtons.appendChild(newButton)
-    })
+    setButtons(gameData)
+    // let turn = gameData[currentTime].options
+
+    // turn.forEach(option =>{
+    //     let newButton = document.createElement('btn')
+    //     newButton.textContent = option
+    //     newButton.addEventListener('click',()=>{
+    //         likeCheck(option)
+    //         runGame(gameData)
+    //     })
+    //     gameButtons.appendChild(newButton)
+    // })
 
     //move to next game time interval
     currentTime ++
@@ -115,11 +128,11 @@ function likeCheck(option){
     //if button matches any of person's interests, add to mood
     person.likes.forEach(like => {
         if(like == option){
-            person.mood += 10
+            person.mood += 25
             return
         }
     })
-    person.mood -= 10
+    person.mood -= 25
 }
 
 //clears game console
@@ -127,4 +140,53 @@ function clearButtons(){
     while(gameButtons.firstChild){
         gameButtons.removeChild(gameButtons.firstChild)
     }
+}
+
+//sets up game buttons
+function setButtons(gameData){
+    let allOptions = gameData[currentTime].options
+
+    let options = [...allOptions]
+
+    options = options.sort(()=>{
+        .5 * Math.random()
+    })
+
+    options = options.slice(0,3)
+
+    if(!optCheck(options)){
+        person.likes.forEach(like => {
+            allOptions.forEach(option =>{
+                if(like == option){
+                    options[0] = like
+                    options = options.sort(()=>{.5*Math.random()})
+                }
+            })
+        })
+    }
+
+
+
+    options.forEach(option =>{
+        let newButton = document.createElement('btn')
+        newButton.textContent = option
+        newButton.addEventListener('click',()=>{
+            likeCheck(option)
+            runGame(gameData)
+        })
+        gameButtons.appendChild(newButton)
+    })
+}
+
+//opttion checker
+
+function optCheck(options){
+    options.forEach(option =>{
+        person.likes.forEach(like=>{
+            if(option == like){
+                return true
+            }
+        })
+    })
+    return false
 }
