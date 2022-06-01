@@ -3,14 +3,42 @@
 "game": [
     {
     "id": 1,
-    "text": "some string",
+    "text": "Good morning!  This is the first day of wahtevwdrnlasdgmnasg...",
     "options": ["Next"]
     },
     {
     "id": 2,
     "text": "some string",
     "options": ["Coffee","Tea","Water"]
+    },
+    {
+    "id": 3,
+    "text": "some string",
+    "options": ["Next"]
+    },
+    {
+    "id": 4,
+    "text": "some string",
+    "options": ["Coffee","Tea","Water"]
+    },
+    {
+    "id": 5,
+    "text": "some string",
+    "options": ["Next"]
+    },
+    {
+    "id": 6,
+    "text": "some string",
+    "options": ["Coffee","Tea","Water"]
+    },
+    {
+    "id": 7,
+    "text": "some string",
+    "options": ["Next"]
     }],
+
+
+
 
 "likes": {
         "music": [],

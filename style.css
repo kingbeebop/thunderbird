@@ -7,6 +7,13 @@ body {
     height: 80%;
 }
 
+#interface{
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: orange; 
+}
+
 #title {
     font-size: 40px;
     font-weight: bold;
