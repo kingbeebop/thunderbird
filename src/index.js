@@ -16,6 +16,13 @@ const gameText = document.getElementById('game-text')
 const gameButtons = document.getElementById('game-buttons')
 let currentTime = 0
 
+//TODO: mood button
+displayMood.addEventListener('click',()=>{
+    //if mood bad: bad background
+    //if mood good: good background
+    //if mood neutral: neutral background
+})
+
 //fetch data and initiate game
 fetch("http://localhost:3000/game")
 .then(res=>res.json())
@@ -224,27 +231,22 @@ function setEmoji(){
         fetch('https://emojihub.herokuapp.com/api/random/group_face_negative')
         .then(res=>res.json())
         .then(emoji =>{
-            displayMood.textContent = emoji.htmlCode
+            displayMood.innerHTML = emoji.htmlCode
         })
     }
     else{if(mood>66){
         fetch('https://emojihub.herokuapp.com/api/random/group_face_positive')
         .then(res=>res.json())
         .then(emoji =>{
-            console.log(emoji)
-            newMood = document.createElement('p')
-            newMood.textContent = emoji.htmlCode
-            displayMood.textContent = emoji.htmlCode
+            displayMood.innerHTML = emoji.htmlCode
         }) 
     }
     else{
         fetch('https://emojihub.herokuapp.com/api/random/group_face_neutral')
         .then(res=>res.json())
         .then(emoji =>{
-            console.log(emoji)
-            newMood = document.createElement('p')
-            newMood.textContent = emoji.htmlCode
-            displayMood.textContent = emoji.htmlCode
+            displayMood.innerHTML = emoji.htmlCode
         })
     }}
+
 }
