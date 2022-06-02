@@ -34,6 +34,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 btn {
@@ -46,4 +47,26 @@ btn {
  
 #game-buttons {
     margin: 10px;
+}
+
+#babble {
+    width: 300px;
+  margin: 50px auto;
+  background: #00bfb6;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: #fff;
+  font-family: arial;
+  position: relative;
+  border: 10px solid white;
+}
+
+#title {
+    background-color:#FFF0F5 ;
+    border: 2px solid tan;
+    border-width: 10px;
+    border-style: double;
+    padding: 4px;
+    margin: 10px;  
 }
