@@ -22,9 +22,9 @@ displayMood.addEventListener('click',()=>{
     if(mood>66){
         newBackground = 'src/clouds.gif'
     } else if(mood<33){
-        newBackground = ''
+        newBackground = 'src/flames.gif'
     } else{
-        newBackground = ''
+        newBackground = 'src/grass.gif'
     }
     //if mood bad: bad background
     //if mood good: good background
