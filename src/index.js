@@ -19,14 +19,15 @@ let currentTime = 0
 //TODO: mood button
 displayMood.addEventListener('click',()=>{
     let newBackground
+
     
-    if(mood>66){
+    if(person.mood>66){
         newBackground = 'src/clouds.gif'
-    } else if(mood<33){
+    } else{if(person.mood<33){
         newBackground = 'src/flames.gif'
     } else{
         newBackground = 'src/grass.gif'
-    }
+    }}
 
     console.log(newBackground)
     //if mood bad: bad background
