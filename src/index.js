@@ -5,11 +5,13 @@ const person = {
     likes: ['one','two','three'],
     image: 'https://thispersondoesnotexist.com/image',
     blabber: "I love myself",
-    mood: 50
+    mood: 50,
+    quote: ''
 }
 const displayTitle = document.getElementById("title")
 const displayImage = document.getElementById("image")
-const displayBlabber = document.getElementById('blabber')
+const displayBabble = document.getElementById('babble')
+const displayMood = document.getElementById('mood')
 const gameText = document.getElementById('game-text')
 const gameButtons = document.getElementById('game-buttons')
 let currentTime = 0
@@ -19,6 +21,7 @@ fetch("http://localhost:3000/game")
 .then(res=>res.json())
 .then(data => {
     setPerson()
+    refreshQuote()
     runGame(data)
 })
 
@@ -82,8 +85,11 @@ function runGame(gameData){
     //     })
     //     gameButtons.appendChild(newButton)
     // })
+    
+    //update emoji
+    setEmoji()
 
-    //move to next game time interval
+    //move to next time interval
     currentTime ++
 
 }
@@ -128,7 +134,7 @@ function likeCheck(option){
     //if button matches any of person's interests, add to mood
     person.likes.forEach(like => {
         if(like == option){
-            person.mood += 25
+            person.mood += 50
             return
         }
     })
@@ -189,4 +195,48 @@ function optCheck(options){
         })
     })
     return false
+}
+
+//refresh random quote
+function refreshQuote(){
+    fetch('https://api.quotable.io/random')
+    .then(res=>res.json())
+    .then(randomQuote => {
+        console.log(randomQuote)
+        person.quote = randomQuote.content
+        displayBabble.textContent = `"${person.quote}"`
+        displayBabble.addEventListener('click', ()=>{
+            refreshQuote()
+        })
+    })
+}
+
+function setEmoji(){
+    if(mood<33){
+        fetch('https://emojihub.herokuapp.com/api/random/group_face_negative')
+        .then(res=>res.json())
+        .then(emoji =>{
+            displayMood.textContent = emoji.htmlCode
+        })
+    }
+    else{if(mood>66){
+        fetch('https://emojihub.herokuapp.com/api/random/group_face_positive')
+        .then(res=>res.json())
+        .then(emoji =>{
+            console.log(emoji)
+            newMood = document.createElement('p')
+            newMood.textContent = emoji.htmlCode
+            displayMood.textContent = emoji.htmlCode
+        }) 
+    }
+    else{
+        fetch('https://emojihub.herokuapp.com/api/random/group_face_neutral')
+        .then(res=>res.json())
+        .then(emoji =>{
+            console.log(emoji)
+            newMood = document.createElement('p')
+            newMood.textContent = emoji.htmlCode
+            displayMood.textContent = emoji.htmlCode
+        })
+    }}
 }

@@ -3,8 +3,14 @@ body {
     text-align: center;
 }
 
-#details {
-    height: 80%;
+#mood {
+    font-style: normal;
+    font-weight:normal;
+    font-size:48px;
+}
+
+#babble{
+    color: whitesmoke;
 }
 
 #interface{
@@ -23,7 +29,7 @@ body {
 
 
 #image {
-    height: 100%;
+    height: 500px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
