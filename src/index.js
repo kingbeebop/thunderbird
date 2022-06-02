@@ -150,17 +150,22 @@ function clearButtons(){
 
 //sets up game buttons
 function setButtons(gameData){
+
+    //get 3 random options, make sure that one is a valid option
+    //if not, replace first then reshuffle
     let allOptions = gameData[currentTime].options
 
     let options = [...allOptions]
+    if(options[0].toLowerCase() != 'next'){
 
+        
     options = options.sort(()=>{
         .5 * Math.random()
     })
 
     options = options.slice(0,3)
 
-    if(!optCheck(options)){
+    if(optCheck(options)){
         person.likes.forEach(like => {
             allOptions.forEach(option =>{
                 if(like == option){
@@ -171,7 +176,9 @@ function setButtons(gameData){
         })
     }
 
+    }
 
+//create button mechanics
 
     options.forEach(option =>{
         let newButton = document.createElement('btn')
@@ -185,16 +192,17 @@ function setButtons(gameData){
 }
 
 //opttion checker
+//returns false if any option matches person's likes
 
 function optCheck(options){
     options.forEach(option =>{
         person.likes.forEach(like=>{
-            if(option == like){
-                return true
+            if(option.toLowerCase() == like.toLowerCase()){
+                return false
             }
         })
     })
-    return false
+    return true
 }
 
 //refresh random quote
