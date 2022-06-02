@@ -19,6 +19,7 @@ let currentTime = 0
 //TODO: mood button
 displayMood.addEventListener('click',()=>{
     let newBackground
+    
     if(mood>66){
         newBackground = 'src/clouds.gif'
     } else if(mood<33){
@@ -26,10 +27,12 @@ displayMood.addEventListener('click',()=>{
     } else{
         newBackground = 'src/grass.gif'
     }
+
+    console.log(newBackground)
     //if mood bad: bad background
     //if mood good: good background
     //if mood neutral: neutral background
-    document.body.style.backgroundImage = newBackground
+    document.body.style.backgroundImage = `url(${newBackground}`
 })
 
 //fetch data and initiate game
